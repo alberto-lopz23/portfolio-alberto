@@ -1,11 +1,195 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import "../styles/global.css";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const projects = [
+  {
+    title: "Admin Dashboard",
+    role: "Fullstack Developer",
+    desc: "Dashboard administrativo de alto rendimiento con Next.js, TypeScript y Tailwind CSS. Panel de control para gestión de usuarios, análisis de datos y configuración avanzada.",
+    tech: ["React", "TypeScript", "Tailwind", "Node.js"],
+    link: "https://github.com/alberto-lopz23/dashboard",
+  },
+  {
+    title: "E-commerce Experience",
+    role: "Frontend Lead",
+    desc: "Landing page profesional para agencia de desarrollo web enfocada en conversión y alto rendimiento.",
+    tech: ["React", "Stripe", "Tailwind"],
+    link: "https://github.com/alberto-lopz23/anerto-webs",
+  },
+  {
+    title: "SaaS Landing Page",
+    role: "Frontend Developer",
+    desc: "Landing page optimizada para conversión (SEO) con animaciones fluidas y diseño mobile-first.",
+    tech: ["React", "JavaScript", "Tailwind", "CSS3"],
+    link: "https://github.com/alberto-lopz23/crud-empresarial",
+  },
+  {
+    title: "Gestor de clientes",
+    role: "Frontend Developer",
+    desc: "Aplicación de gestión de clientes con React, TypeScript y Tailwind CSS. CRUD completo, autenticación JWT y diseño responsive.",
+    tech: ["React", "TypeScript", "Tailwind", "Node.js"],
+    link: "https://github.com/alberto-lopz23/gestor-clientes",
+  },
+];
+
+const skills = [
+  "React",
+  "Astro",
+  "Next.js",
+  "JavaScript (ES6+)",
+  "TypeScript",
+  "Node.js",
+  "Tailwind CSS",
+  "Git & GitHub",
+];
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="shortcut icon"
+      href="/src/assets/hombre.ico"
+      type="image/x-icon"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alberto Lopez | Frontend Developer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#" class="logo">Alberto <span>López</span></a>
+        <ul class="nav-links">
+          <li><a href="#projects">Proyectos</a></li>
+          <li><a href="#about">Sobre mí</a></li>
+          <li><a href="#skills">Stack</a></li>
+          <li><a href="#contact" class="nav-contact">Contactar</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <section id="hero">
+        <div class="hero-glow"></div>
+        <div class="container animate-fade">
+          <span class="badge">Disponible para nuevos proyectos</span>
+          <h1 class="hero-title">
+            Transformo ideas en <br />
+            <span>Interfaces de Alto Impacto</span>
+          </h1>
+          <p class="hero-subtitle">
+            Soy Alberto, <strong>Frontend Developer</strong> especializado en crear
+            experiencias web modernas, rápidas y accesibles utilizando el ecosistema
+            de JavaScript.
+          </p>
+          <div class="btn-group">
+            <a href="#projects" class="btn-primary">Ver Portafolio</a>
+            <a
+              href="https://www.linkedin.com/in/alberto-lopez-checo-294961271/"
+              target="_blank"
+              class="btn-secondary">LinkedIn</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section-padding">
+        <div class="container">
+          <header class="section-header">
+            <h2 class="section-title">Proyectos Destacados</h2>
+            <div class="title-line"></div>
+          </header>
+
+          <div class="projects-grid">
+            {
+              projects.map((p) => (
+                <article class="project-card">
+                  <header>
+                    <span class="project-role">{p.role}</span>
+                    <h3>{p.title}</h3>
+                  </header>
+                  <p class="project-desc">{p.desc}</p>
+                  <footer class="project-footer">
+                    <div class="tech-stack">
+                      {p.tech.map((t) => (
+                        <span class="tech-tag">{t}</span>
+                      ))}
+                    </div>
+                    <a href={p.link} target="_blank" class="project-link">
+                      Ver Código
+                    </a>
+                  </footer>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section-padding bg-darker">
+        <div class="container grid-2-cols">
+          <div class="about-text">
+            <h2 class="section-title">Sobre mi enfoque</h2>
+            <p>
+              No solo escribo código; construyo productos digitales. Me enfoco
+              en la <strong>optimización de rendimiento</strong>, la <strong
+                >escalabilidad</strong
+              > y una experiencia de usuario impecable.
+            </p>
+            <p>
+              Mi objetivo es ayudar a empresas a destacar mediante interfaces
+              que no solo se vean bien, sino que funcionen perfectamente en
+              cualquier dispositivo.
+            </p>
+          </div>
+          <div class="about-stats">
+            <div class="stat-card">
+              <h4>Astro & React</h4>
+              <p>Especialización principal</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section-padding">
+        <div class="container text-center">
+          <h2 class="section-title">Tecnologías y herramientas</h2>
+          <div class="skills-container">
+            {skills.map((s) => <span class="skill-badge">{s}</span>)}
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section-padding">
+        <div class="container contact-box">
+          <h2 class="hero-title">¿Listo para escalar tu producto?</h2>
+          <p class="hero-subtitle">
+            Hablemos sobre cómo puedo aportar valor a tu equipo técnico.
+          </p>
+          <div class="btn-group-center">
+            <a href="mailto:albertolopezcheco3@gmail.com" class="btn-primary"
+              >Enviar Email</a
+            >
+            <a href="/public/cv/Cv-AlbertoLopez.pdf" download class="btn-secondary">
+              Descargar CV
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="main-footer">
+      <p>© 2026 Alberto Lopez — Santo Domingo, RD</p>
+      <div class="social-links">
+        <a href="https://github.com/alberto-lopz23">Github</a>
+        <a href="https://www.linkedin.com/in/alberto-lopez-checo-294961271/"
+          >LinkedIn</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>
